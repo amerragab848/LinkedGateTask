@@ -13,10 +13,8 @@ namespace LinkedGateTask.Controllers
 {
     public class DeviceCategoryController : Controller
     {
-        StudentService studentService = new StudentService();
-        FieldService fieldService = new FieldService();
-        GovernorateService governorateService = new GovernorateService();
-        NeighborhoodService neighborhoodService = new NeighborhoodService();
+        DeviceCategoryService DeviceCategoryService = new DeviceCategoryService();
+        
 
         // GET: Student
         public ActionResult Index()

@@ -127,7 +127,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DeviceCategoryListingVM.cs" />
     <Compile Include="Models\DeviceCategoryVM.cs" />
+    <Compile Include="Models\DeviceListingVM.cs" />
+    <Compile Include="Models\DevicePropertyListingVM.cs" />
     <Compile Include="Models\DevicePropertyVM.cs" />
     <Compile Include="Models\DeviceVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

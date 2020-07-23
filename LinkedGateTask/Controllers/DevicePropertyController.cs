@@ -14,7 +14,7 @@ namespace ArmyTechTask.Controllers
 {
     public class DevicePropertyController : Controller
     {
-        StudentService studentService = new StudentService();
+        DevicePropertyService DeviceProperty = new DevicePropertyService();
         FieldService fieldService = new FieldService();
         GovernorateService governorateService = new GovernorateService();
         NeighborhoodService neighborhoodService = new NeighborhoodService();
