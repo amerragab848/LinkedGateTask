@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedGateTask", "LinkedGateTask\LinkedGateTask.csproj", "{EE9F17F6-DE7F-41B6-B213-9A80D75B7F1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{FF8789E3-1E66-4296-A18F-CD0EBCE04728}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "DAL\DAL.csproj", "{E7A035A1-7920-4937-812C-94BB0AE18F0B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE9F17F6-DE7F-41B6-B213-9A80D75B7F1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE9F17F6-DE7F-41B6-B213-9A80D75B7F1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE9F17F6-DE7F-41B6-B213-9A80D75B7F1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE9F17F6-DE7F-41B6-B213-9A80D75B7F1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF8789E3-1E66-4296-A18F-CD0EBCE04728}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF8789E3-1E66-4296-A18F-CD0EBCE04728}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF8789E3-1E66-4296-A18F-CD0EBCE04728}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF8789E3-1E66-4296-A18F-CD0EBCE04728}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7A035A1-7920-4937-812C-94BB0AE18F0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7A035A1-7920-4937-812C-94BB0AE18F0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7A035A1-7920-4937-812C-94BB0AE18F0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7A035A1-7920-4937-812C-94BB0AE18F0B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B60027DA-87AA-4F81-B41D-8ADA5B96E455}
+	EndGlobalSection
+EndGlobal

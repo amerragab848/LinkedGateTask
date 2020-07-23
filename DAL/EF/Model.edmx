@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DeviceDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="DeviceCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceCategory" Type="nvarchar(max)" />
+          <Property Name="DeviceId" Type="int" />
+        </EntityType>
+        <EntityType Name="DeviceProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceProperty" Type="nvarchar(max)" />
+          <Property Name="DeviceId" Type="int" />
+        </EntityType>
+        <EntityType Name="Devices">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeviceName" Type="nvarchar(max)" />
+          <Property Name="SerialNo" Type="nvarchar(max)" />
+          <Property Name="Memo" Type="nvarchar(max)" />
+        </EntityType>
+        <Association Name="FK_DeviceCategory_Devices">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceCategory" Type="Self.DeviceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceCategory">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceProperty_Devices">
+          <End Role="Devices" Type="Self.Devices" Multiplicity="0..1" />
+          <End Role="DeviceProperty" Type="Self.DeviceProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceProperty">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeviceDBModelStoreContainer">
+          <EntitySet Name="DeviceCategory" EntityType="Self.DeviceCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DeviceProperty" EntityType="Self.DeviceProperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Devices" EntityType="Self.Devices" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_DeviceCategory_Devices" Association="Self.FK_DeviceCategory_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="DeviceCategory" EntitySet="DeviceCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceProperty_Devices" Association="Self.FK_DeviceProperty_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="DeviceProperty" EntitySet="DeviceProperty" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DeviceDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="DeviceCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceCategory1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="Int32" />
+          <NavigationProperty Name="Device" Relationship="Self.FK_DeviceCategory_Devices" FromRole="DeviceCategory" ToRole="Devices" />
+        </EntityType>
+        <EntityType Name="DeviceProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceProperty1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DeviceId" Type="Int32" />
+          <NavigationProperty Name="Device" Relationship="Self.FK_DeviceProperty_Devices" FromRole="DeviceProperty" ToRole="Devices" />
+        </EntityType>
+        <EntityType Name="Device">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeviceName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SerialNo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Memo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DeviceCategories" Relationship="Self.FK_DeviceCategory_Devices" FromRole="Devices" ToRole="DeviceCategory" />
+          <NavigationProperty Name="DeviceProperties" Relationship="Self.FK_DeviceProperty_Devices" FromRole="Devices" ToRole="DeviceProperty" />
+        </EntityType>
+        <Association Name="FK_DeviceCategory_Devices">
+          <End Role="Devices" Type="Self.Device" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DeviceCategory" Type="Self.DeviceCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceCategory">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DeviceProperty_Devices">
+          <End Role="Devices" Type="Self.Device" Multiplicity="0..1" />
+          <End Role="DeviceProperty" Type="Self.DeviceProperty" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Devices">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DeviceProperty">
+              <PropertyRef Name="DeviceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DeviceDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="DeviceCategories" EntityType="Self.DeviceCategory" />
+          <EntitySet Name="DeviceProperties" EntityType="Self.DeviceProperty" />
+          <EntitySet Name="Devices" EntityType="Self.Device" />
+          <AssociationSet Name="FK_DeviceCategory_Devices" Association="Self.FK_DeviceCategory_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="DeviceCategory" EntitySet="DeviceCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DeviceProperty_Devices" Association="Self.FK_DeviceProperty_Devices">
+            <End Role="Devices" EntitySet="Devices" />
+            <End Role="DeviceProperty" EntitySet="DeviceProperties" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DeviceDBModelStoreContainer" CdmEntityContainer="DeviceDBEntities">
+          <EntitySetMapping Name="DeviceCategories">
+            <EntityTypeMapping TypeName="DeviceDBModel.DeviceCategory">
+              <MappingFragment StoreEntitySet="DeviceCategory">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeviceCategory1" ColumnName="DeviceCategory" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DeviceProperties">
+            <EntityTypeMapping TypeName="DeviceDBModel.DeviceProperty">
+              <MappingFragment StoreEntitySet="DeviceProperty">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeviceProperty1" ColumnName="DeviceProperty" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Devices">
+            <EntityTypeMapping TypeName="DeviceDBModel.Device">
+              <MappingFragment StoreEntitySet="Devices">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DeviceName" ColumnName="DeviceName" />
+                <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+                <ScalarProperty Name="Memo" ColumnName="Memo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
