@@ -16,18 +16,19 @@ namespace ArmyTechTask.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            List<TeacherListingVM> teacherListingVM = new List<TeacherListingVM>();
-            teacherService.GetAllTeachers().ToList().ForEach(c => {
-                TeacherListingVM teacherListing = new TeacherListingVM
+            List<DeviceListingVM> DeviceListingVM = new List<DeviceListingVM>();
+            DeviceService.GetAllDevices().ToList().ForEach(c => {
+                DeviceListingVM deviceListingVM = new DeviceListingVM
                 {
-                    ID = c.ID,
-                    Name = c.Name,
-                    BirthDate=c.BirthDate.ToString()
+                   Id=c.Id,
+                   DeviceName=c.DeviceName,
+                   Memo=c.Memo,
+                   SerialNo=c.SerialNo
                 };
-                teacherListingVM.Add(teacherListing);
+                DeviceListingVM.Add(deviceListingVM);
             });
 
-            return View(teacherListingVM);
+            return View(DeviceListingVM);
         }
 
         // GET: Field/Details/5
